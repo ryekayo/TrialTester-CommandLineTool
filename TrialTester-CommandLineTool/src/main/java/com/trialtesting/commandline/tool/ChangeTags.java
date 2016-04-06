@@ -47,22 +47,22 @@ public class ChangeTags {
     public void promptForTagLocation() {
     	try 
     	{
-    		log.debug("Prompting User for Location");
-    		System.out.println("Please Enter DICOM File Location: ");
-    		String dicomLocation = input.next();
-    		changeToDICOMObject(dicomLocation);
-    		System.out.println("From what TXT File are you reading the tags that need changing: ");
-    		String tagChangeText = input.next();
-    		System.out.println(tagChangeText);
-    		readFromTextFile(tagChangeText);
+    	    log.debug("Prompting User for Location");
+    	    System.out.println("Please Enter DICOM File Location: ");
+    	    String dicomLocation = input.next();
+    	    changeToDICOMObject(dicomLocation);
+    	    System.out.println("From what TXT File are you reading the tags that need changing: ");
+    	    String tagChangeText = input.next();
+    	    System.out.println(tagChangeText);
+    	    readFromTextFile(tagChangeText);
     	}
     	catch(IOException e)
     	{
-    		log.error(e);
+    	    log.error(e);
     	}
     	catch(NullPointerException a)
     	{
-    		log.error(a);
+    	    log.error(a);
     	}
     }   
     public void changeToDICOMObject(String path) throws IOException 
@@ -77,7 +77,7 @@ public class ChangeTags {
         }
         catch (NullPointerException a)
         {
-        	log.error(a);
+            log.error(a);
         }
         finally 
         {
@@ -121,7 +121,6 @@ public class ChangeTags {
         }
         catch (NumberFormatException e) {
             log.error(e);
-            e.printStackTrace();
         }
     }
 }
