@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 public class ChangeTags {
 	
-	private static final Logger log = Logger.getLogger(ChangeTags.class);
+    private static final Logger log = Logger.getLogger(ChangeTags.class);
     Scanner input = new Scanner(System.in);
     public static DicomObject dcmObj;
     public static ArrayList<String> list = new ArrayList<String>();
