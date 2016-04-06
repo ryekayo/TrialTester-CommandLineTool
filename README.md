@@ -6,7 +6,7 @@ Scientific Linux/CentOS 6.x
 Windows 7
 
 
-This tool is something I created for my first job outside of College. The Trial Tester is a command line tool that would essentially take in a .dcm file and manipulate the DICOM tags that are inside of it. The library I had used to dissect the file is dcm4che 2. The Trial Tester consisted of a menu driven program that will allow you to either View the Tags, Insert the Tags, or Modify the Tags. I will explain each option in greater detail.
+This tool is something I created for my first job outside of College. The Trial Tester is a command line tool that would essentially take in a .dcm file and manipulate the DICOM tags that are inside of it. The library I had used to dissect the file is dcm4che2. The Trial Tester consisted of a menu driven program that will allow you to either View the Tags, Insert the Tags, or Modify the Tags. I will explain each option in greater detail.
 
 
 # View the Tags
