@@ -5,12 +5,12 @@ import org.apache.log4j.Logger;
 
 public class Menu 
 {
-	private static final Logger log = Logger.getLogger(Menu.class);
+    private static final Logger log = Logger.getLogger(Menu.class);
 	
-	public static void main(String[] args) throws IOException 
-	{
-		showMenu();
-	}
+    public static void main(String[] args) throws IOException 
+    {
+	showMenu();
+    }
     public static void showMenu() throws IOException 
     {
         Scanner input = new Scanner(System.in);
