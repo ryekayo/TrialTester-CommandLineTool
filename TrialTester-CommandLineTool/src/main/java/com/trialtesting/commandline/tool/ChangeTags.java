@@ -17,8 +17,8 @@ import org.apache.log4j.Logger;
 import org.dcm4che2.data.DicomObject;
 import java.util.Scanner;
 
-public class ChangeTags {
-	
+public class ChangeTags 
+{
     private static final Logger log = Logger.getLogger(ChangeTags.class);
     Scanner input = new Scanner(System.in);
     public static DicomObject dcmObj;
@@ -26,7 +26,8 @@ public class ChangeTags {
     public static final HashMap<VR, String> stringReplacements = new HashMap<VR, String>();
     public static final HashMap<VR, Integer> intReplacements = new HashMap<VR, Integer>();
     
-    public ChangeTags() {
+    public ChangeTags() 
+    {
         stringReplacements.put(VR.DA, "20150101");
         stringReplacements.put(VR.DT, "20150101");
         stringReplacements.put(VR.SH, "testingThis");
@@ -44,7 +45,8 @@ public class ChangeTags {
         intReplacements.put(VR.UL, 25);
         intReplacements.put(VR.SL, 25);
     }  
-    public void promptForTagLocation() {
+    public void promptForTagLocation() 
+    {
     	try 
     	{
     	    log.debug("Prompting User for Location");
@@ -68,7 +70,8 @@ public class ChangeTags {
     public void changeToDICOMObject(String path) throws IOException 
     {
         DicomInputStream din = null;
-        try {
+        try 
+        {
             din = new DicomInputStream(new File(path));
             dcmObj = din.readDicomObject();
         }
@@ -84,29 +87,35 @@ public class ChangeTags {
             din.close();
         }
     }    
-    public void readFromTextFile(String path) throws IOException {
+    public void readFromTextFile(String path) throws IOException
+    {
     	log.debug("Reading from Text File");
     	Scanner read = new Scanner(new File(path));
-        while (read.hasNext()) {
+        while (read.hasNext()) 
+        {
             list.add(read.nextLine());
         }
         System.out.println("Reading from tag List....");
         System.out.println("Changing dicom tags...");
         matchTags();
     }  
-    public void matchTags() throws IOException {
+    public void matchTags() throws IOException 
+    {
         try {
         	log.debug("Changing Tags");
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < list.size(); i++) 
+            {
                 String replaceTag = list.get(i).toString().replaceAll("[(),]", "");
                 int valueofReplaceTag = (int)Long.parseLong(replaceTag, 16);
                 VR replaceTagVR = dcmObj.vrOf(valueofReplaceTag);
                 String s = stringReplacements.get(replaceTagVR);
-                if (s != null) {
+                if (s != null) 
+                {
                     dcmObj.putString(valueofReplaceTag, replaceTagVR, s);
                 }
                 Integer j = intReplacements.get(replaceTagVR);
-                if (j != null) {
+                if (j != null) 
+                {
                     dcmObj.putInt(valueofReplaceTag, replaceTagVR, j);
                 }
             }
@@ -119,7 +128,8 @@ public class ChangeTags {
             System.out.println("Tags have been successfully changed!");
             Menu.showMenu();
         }
-        catch (NumberFormatException e) {
+        catch (NumberFormatException e) 
+        {
             log.error(e);
         }
     }
