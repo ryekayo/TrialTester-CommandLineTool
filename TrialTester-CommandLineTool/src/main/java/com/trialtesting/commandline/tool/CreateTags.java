@@ -11,27 +11,31 @@ import org.dcm4che2.data.DicomObject;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
 
-public class CreateTags {
-
-	private static final Logger log = Logger.getLogger(CreateTags.class);
+public class CreateTags 
+{
+    private static final Logger log = Logger.getLogger(CreateTags.class);
     Scanner input = new Scanner(System.in);
     public static DicomObject dcmObj;
     
-    public void determineIfIntOrStringTag() {
+    public void determineIfIntOrStringTag() 
+    {
     	log.debug("Asking User if Tag will be listed as String or Non-String");
         System.out.println("Please advise if the tag being changed will be numeric (non-String) or a String value: ");
         System.out.println("Please enter: NON-STRING or STRING");
         String answer = input.next();
-        if (answer.equals("STRING")) {
+        if (answer.equals("STRING")) 
+        {
             try 
             {
                 promptforLocation();
             }
-            catch (IOException e) {
+            catch (IOException e) 
+            {
                 log.error(e);
             }
         }
-        else if (answer.equals("NON-STRING")) {
+        else if (answer.equals("NON-STRING")) 
+        {
             try 
             {
                 promptForIntTags();
@@ -41,12 +45,14 @@ public class CreateTags {
                 log.error(e);
             }
         }
-        else {
+        else
+        {
             System.out.println("Please enter STRING or NON-STRING");
-            this.determineIfIntOrStringTag();
+            determineIfIntOrStringTag();
         }
     }
-    public void promptforLocation() throws IOException {
+    public void promptforLocation() throws IOException 
+    {
     	log.debug("Asking user where .dcm file is located");
         System.out.println("Please Enter DICOM File Location: ");
         String dicomLocation = this.input.next();        
@@ -59,7 +65,8 @@ public class CreateTags {
         
         insertTag(inputTag, tagValue);
     }  
-    public void promptForIntTags() throws IOException {
+    public void promptForIntTags() throws IOException 
+    {
     	log.debug("Asking user where .dcm file is located");
         System.out.println("Please Enter DICOM File Location: ");
         String dicomLocation = this.input.next();
@@ -71,7 +78,8 @@ public class CreateTags {
         int number = this.input.nextInt();
         insertTag(inputForTag, number);
     }
-    public void changeToDICOMObject(String path) throws IOException {
+    public void changeToDICOMObject(String path) throws IOException 
+    {
     	log.debug("Creating DICOM object");
         DicomInputStream din = null;
         try 
@@ -88,7 +96,8 @@ public class CreateTags {
         }
         System.out.println("Now reading DCM File");
     }   
-    public void insertTag(String tag, String value) throws IOException {
+    public void insertTag(String tag, String value) throws IOException 
+    {
     	log.debug("Inserting DICOM tag into .dcm file");
         String formattedTag = tag.replaceAll("[(),]", "");
         int valueofReplaceTag = (int)Long.parseLong(formattedTag, 16);
@@ -104,14 +113,17 @@ public class CreateTags {
         System.out.println("DICOM Tag has been successfully saved.");
         System.out.println("Would you like to add another tag? Type YES or NO");
         String answer = this.input.next();
-        if (answer.equals("YES")) {
+        if (answer.equals("YES")) 
+        {
             promptforLocation();
         }
-        else if (answer.equals("NO")) {
+        else if (answer.equals("NO")) 
+        {
             Menu.showMenu();
         }
     }  
-    public void insertTag(String tag, int value) throws IOException {
+    public void insertTag(String tag, int value) throws IOException 
+    {
     	log.debug("Inserting DICOM tag into .dcm file");
         String formattedTag = tag.replaceAll("[(),]", "");
         int valueofReplaceTag = (int)Long.parseLong(formattedTag, 16);
@@ -127,10 +139,12 @@ public class CreateTags {
         System.out.println("DICOM Tag has been successfully saved.");
         System.out.println("Would you like to add another tag? Type YES or NO");
         String answer = this.input.next();
-        if (answer.equals("YES")) {
+        if (answer.equals("YES")) 
+        {
             promptforLocation();
         }
-        else if (answer.equals("NO")) {
+        else if (answer.equals("NO")) 
+        {
             Menu.showMenu();
         }
     }
