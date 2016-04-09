@@ -55,13 +55,13 @@ public class CreateTags
     {
     	log.debug("Asking user where .dcm file is located");
         System.out.println("Please Enter DICOM File Location: ");
-        String dicomLocation = this.input.next();        
+        String dicomLocation = input.next();        
         changeToDICOMObject(dicomLocation);
         
         System.out.println("Please Enter Tag (EX: (0010,0010)): ");
-        String inputTag = this.input.next();
+        String inputTag = input.next();
         System.out.println("Please Enter Value (Enter String values Only!! See VR Code Sheet for Assistance in correct Syntax!!): ");
-        String tagValue = this.input.next();
+        String tagValue = input.next();
         
         insertTag(inputTag, tagValue);
     }  
@@ -69,13 +69,13 @@ public class CreateTags
     {
     	log.debug("Asking user where .dcm file is located");
         System.out.println("Please Enter DICOM File Location: ");
-        String dicomLocation = this.input.next();
+        String dicomLocation = input.next();
         changeToDICOMObject(dicomLocation);
         
         System.out.println("Enter Tag: ");
-        String inputForTag = this.input.next();
+        String inputForTag = input.next();
         System.out.println("Enter Numeric Value: ");
-        int number = this.input.nextInt();
+        int number = input.nextInt();
         insertTag(inputForTag, number);
     }
     public void changeToDICOMObject(String path) throws IOException 
@@ -104,7 +104,7 @@ public class CreateTags
         CreateTags.dcmObj.putString(valueofReplaceTag, CreateTags.dcmObj.vrOf(valueofReplaceTag), value);
         
         System.out.println("Where is the new DCM file being saved to? Please enter directory (Include File name and Extension): ");
-        String directoryPath = this.input.next();
+        String directoryPath = input.next();
         File out = new File(directoryPath);
         DicomOutputStream dos = new DicomOutputStream(new BufferedOutputStream(new FileOutputStream(out)));
         dos.writeDicomFile(CreateTags.dcmObj);
@@ -112,7 +112,7 @@ public class CreateTags
         
         System.out.println("DICOM Tag has been successfully saved.");
         System.out.println("Would you like to add another tag? Type YES or NO");
-        String answer = this.input.next();
+        String answer = input.next();
         if (answer.equals("YES")) 
         {
             promptforLocation();
@@ -130,7 +130,7 @@ public class CreateTags
         CreateTags.dcmObj.putInt(valueofReplaceTag, CreateTags.dcmObj.vrOf(valueofReplaceTag), value);
         
         System.out.println("Where is the new DCM file being saved to? Please enter directory (Include File name and Extension): ");
-        String directoryPath = this.input.next();
+        String directoryPath = input.next();
         File out = new File(directoryPath);
         DicomOutputStream dos = new DicomOutputStream(new BufferedOutputStream(new FileOutputStream(out)));
         dos.writeDicomFile(CreateTags.dcmObj);
@@ -138,7 +138,7 @@ public class CreateTags
         
         System.out.println("DICOM Tag has been successfully saved.");
         System.out.println("Would you like to add another tag? Type YES or NO");
-        String answer = this.input.next();
+        String answer = input.next();
         if (answer.equals("YES")) 
         {
             promptforLocation();
